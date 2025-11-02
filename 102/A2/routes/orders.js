@@ -69,13 +69,11 @@ router.route('/:id')
     }
   })
   .delete((req,res)=>{
-    console.log(db)
     const {id}=req.params,
           index=db.orders.findIndex(o=>o.orderId===id)
     if (index>-1) {
       db.orders.splice(index,1)
       res.send(`SUCCESSFULLY DELETED ORDER: ${id}`)
-      console.log(db)
     } else {
       res.send(`orderId: ${id} does not exist`)
     }

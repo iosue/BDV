@@ -1,2 +1,2 @@
 ###
-http://localhost:3000/api/orders/15
+DELETE http://localhost:3000/petesza/orders/57aa5c9c-a49a-424a-9d0b-343e7ffde5c5

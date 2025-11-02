@@ -1,0 +1,43 @@
+const db={
+  orders:[],
+  products:[
+    {
+      productId:101,
+      size:"L",
+      toppings:[
+        "pepperoni",
+        "mushroom",
+        "tomato"
+      ],
+      price:17
+    },
+    {
+      productId:102,
+      size:"M",
+      toppings:[
+        "mustard",
+        "lettuce",
+        "turkey"
+      ],
+      price:13
+    }
+  ],
+  customers:[
+    {
+      customerId:1,
+      firstName:"Papa",
+      lastName:"John",
+      pendingOrderIds:[],
+      previousOrderIds:[]
+    },
+    {
+      customerId:2,
+      firstName:"Little",
+      lastName:"Caesar",
+      pendingOrderIds:[],
+      previousOrderIds:[]
+    }
+  ]
+}
+
+module.exports=db

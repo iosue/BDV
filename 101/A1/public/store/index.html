@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LIBER2 Book Store</title>
+  <style>
+    #page {
+      position: fixed;
+      inset: 0rem;
+      display: grid;
+      grid-template:
+        "head" auto
+        "main" 1fr
+        "foot" auto
+        / 1fr auto;
+      &>* {
+        &#head {
+          grid-area: head;
+          background: hsl(80 40 20);
+          color: #fff;
+          text-align: center;
+        }
+        &#user {
+          grid-area: user;
+          background: #ccc;
+          border-left: 4px solid #222;
+          padding: 1em;
+          width: 32ch;
+        }
+        &#main {
+          grid-area: main;
+          padding: 1em
+        }
+        &#foot {
+          grid-area: foot;
+          background: #222;
+          color: #ccc;
+          color-scheme: dark;
+          padding-block: 1em 2em;
+          text-align: center;
+        }
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="page">
+    <section id="head">
+      <h1>LIBER<sup>2</sup> Book Store</h1>
+    </section>
+    <!-- <section id="user">
+      <h3>Signed in as <b>User1</b></h3>
+    </section> -->
+    <section id="main">
+      <p>View library by <a href="./authors" title="GET /store/authors">Authors</a></p>
+      <p>View library by <a href="./books" title="GET /store/titles">Book Title</a></p>
+    </section>
+    <section id="foot">
+      <a href="../">LIBER<sup>2</sup> Books</a> c 2025
+    </section>
+  </div>
+</body>
+</html>

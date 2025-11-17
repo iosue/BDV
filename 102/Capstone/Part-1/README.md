@@ -1,4 +1,21 @@
-# Capstone
+Josh Pires :: 000649771 :: piresj :: 16 Nov 2025
+
+---
+
+# BDV102 Capstone - Part 1
+
+GitHub repository: <https://github.com/iosue/BDV/tree/main/102/Capstone/Part-1>
+
+>\$ cd .../102/capstone/part-1
+>\$ node swiftcart
+
+[Note] See key files:
+- <a href="./README.md">README.md</a>
+- <a href="./ERD.pdf">ERD.pdf</a>
+- <a href="./schema.sql">schema.sql</a>
+- <a href="./test.rest">test.rest</a>
+
+---
 
 ## 1 - Use Cases for an Online Store
 
@@ -21,6 +38,8 @@ Server must save state of the cart for the given user between sessions.
 
 Similar to above, but the rationale here is that many e-stores will offer Free Shipping for qualifying orders (>= $threshold).  User can add items one at a time, days apart until a cart total value is reached, then process the order for free shipping or other discount.
 
+---
+
 ## 2 - ERD and Schema
 
 <object data="./ERD.pdf" type="application/pdf">
@@ -39,6 +58,8 @@ Similar to above, but the rationale here is that many e-stores will offer Free S
   <a href="./schema.sql">Download schema.sql</a>.
 </p>
 
+---
+
 ## 3 - Key Operations of an Online Store
 
 - Create user account with name, email etc. to generate associated persistent cart. [POST]
@@ -51,6 +72,8 @@ Similar to above, but the rationale here is that many e-stores will offer Free S
   - remove items from cart [DELETE]
 - Create and send transaction request for a complete order [POST to payment API]
 - View list and details of previous transactions [GET]
+
+---
 
 ## 4 - API Endpoints & HTTP Methods
 
@@ -122,10 +145,14 @@ edit item quantity in cart
 
 remove item from cart
 
+---
+
 ## 5 - Discussion
 
 For the purposes of this assignment, I have focused only on the functionality of a single registered-(mock)-user; user registration and account editing etc follows similar logic to the cart process.
 
-In developing the ERD, the cart_id was listed as order_id, and fed into the Item_in_Order entity (since Item_in_Order will only ever have ONE OF EITHER order_id or cart_id).  this caused a constraint collision in postgres, however.
+The current structure of the database is a .json file acting  as an internal javascript object. changes made are not persistent. SQL schema and js logic are present; integration will be addressed going forward with the project.
+
+*In developing the ERD, the cart_id was listed as order_id, and fed into the Item_in_Order entity (since Item_in_Order will only ever have ONE OF EITHER order_id or cart_id).  this caused a constraint collision in postgres, however.  What is the appropriate solution here?*
 
 >

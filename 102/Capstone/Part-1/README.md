@@ -10,7 +10,7 @@ GitHub repository: <https://github.com/iosue/BDV/tree/main/102/Capstone/Part-1>
 >\$ node swiftcart
 
 [Note] See key files:
-- <a href="./README.md">README.md</a>
+- <a href="./README.md">README.md</a> and <a href="./documentation.doc">documentation.doc</a>
 - <a href="./ERD.pdf">ERD.pdf</a>
 - <a href="./schema.sql">schema.sql</a>
 - <a href="./test.rest">test.rest</a>

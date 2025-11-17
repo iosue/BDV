@@ -1,0 +1,16 @@
+# POST http://localhost:3000/store/users
+# content-type: application/json
+
+# {
+#   "email": "piresj@mcmaster.ca"
+# }
+
+# PUT http://localhost:3000/store/users/U-001
+# content-type: application/json
+
+# {
+#   "firstName": "Josh",
+#   "lastName": "Pires"
+# }
+
+GET http://localhost:3000/store/users/U-001/orders

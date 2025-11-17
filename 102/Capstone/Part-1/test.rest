@@ -5,6 +5,9 @@
 #   "email": "piresj@mcmaster.ca"
 # }
 
+
+
+
 # PUT http://localhost:3000/store/users/U-001
 # content-type: application/json
 
@@ -13,4 +16,39 @@
 #   "lastName": "Pires"
 # }
 
-GET http://localhost:3000/store/users/U-001/orders
+
+
+
+
+# # 
+# POST http://localhost:3000/store/users/U-000/cart
+# content-type: application/json
+
+# {
+#   "itemId": "I-003",
+#   "quantity": 2
+# }
+
+
+
+
+# # 
+# PUT http://localhost:3000/store/users/U-000/cart/I-003
+# content-type: application/json
+
+# {
+#   "quantity": 0
+# }
+
+
+
+
+# # 
+# DELETE http://localhost:3000/store/users/U-000/cart/I-003
+
+
+
+
+# GET http://localhost:3000/store/users/U-000/cart
+
+

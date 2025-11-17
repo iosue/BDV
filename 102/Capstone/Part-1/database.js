@@ -16,12 +16,18 @@ const db = {
           orderId: "O-000",
 
         }
+      ],
+      cart: [
+        {
+          itemId: "I-001",
+          quantity: 3
+        }
       ]
     }
   ],
 	items: [
 		{
-			itemId: 101,
+			itemId: "I-001",
 			itemName: "Labubu",
 			itemDesc: `
           Zoomorphic elf with exaggerated facial expressions.
@@ -32,13 +38,13 @@ const db = {
 			price: 26.99,
 		},
 		{
-			itemId: 102,
+			itemId: "I-002",
 			itemName: "Beanie Babies [Full Collection]",
 			itemDesc: `Full collection of every Beanie Baby doll ever made.  CLEARANCE: 96% OFF`,
 			price: 7.95,
 		},
 		{
-			itemId: 101,
+			itemId: "I-003",
 			itemName: "2026 Honda Civic Hatchback",
 			itemDesc: `
         2026 Honda Civic Hatchback.

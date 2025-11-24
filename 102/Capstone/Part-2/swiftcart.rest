@@ -1,0 +1,87 @@
+#### List available products in the store
+GET /products  
+ 
+#### Add a quantity of item_id 1001 to the shopping cart
+POST /cart
+Content-Type: application/json
+ 
+{
+  "item_id": 1001,
+  "quantity": 2
+}
+
+#### List current contents of cart
+GET /cart
+ 
+#### Edit quantity of item_id 1001 in the shopping cart
+PUT /cart/1001
+Content-Type: application/json
+ 
+{
+  "quantity": 3
+} 
+
+#### Remove all quantity (entire line item) of item_id 1001 from the shopping cart
+DELETE /cart/1001
+
+
+#### Process Order
+#### Push content of shopping cart to the Payment Processing API
+POST /process
+Content-Type: application/json
+ 
+{
+  "user_id": 101,
+  "status": 1, // ["Processing", "Paid", "Shipped", "Partial", "Complete"]
+  "payer_id": 1001,
+  "order_date": "2025-11-24T23:59:00-05:00",
+  "shipping_address": 1001,
+  "line_items": [
+    {
+      "item_id": 1001,
+      "qty": 2,
+      "price": 100.00,
+      "discount_type": "percent",
+      "discount_amount": 5
+    },
+    {
+      "item_id": 1002,
+      "qty": 1,
+      "price": 100.00,
+      "discount_type": "flat",
+      "discount_amount": 15.00
+    }
+  ]
+} 
+
+
+
+#### Finalize Order AFTER PAYMENT CONFIRMED
+#### Add order details to the Order list
+POST /orders
+Content-Type: application/json
+ 
+{
+  "user_id": 101,
+  "status": 1,
+  "payer_id": 1001,
+  "order_date": "2025-11-24T23:59:00-05:00",
+  "shipping_address": 1001,
+  "line_items": [
+    {
+      "item_id": 1001,
+      "qty": 2,
+      "price": 100.00,
+      "discount_type": "percent",
+      "discount_amount": 5
+    },
+    {
+      "item_id": 1002,
+      "qty": 1,
+      "price": 100.00,
+      "discount_type": "flat",
+      "discount_amount": 15.00
+    }
+  ]
+} 
+

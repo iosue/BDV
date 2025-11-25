@@ -13,6 +13,7 @@ app.use(express.urlencoded({extended:true}))
 
 // access to root directory returns redirect
 app.get('/',(req,res)=>{
+  console.log('redirecting to /store')
   res.redirect('/store')
 })
 

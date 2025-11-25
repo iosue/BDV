@@ -1,5 +1,13 @@
 #### List available products in the store
-GET /products  
+GET /store
+ 
+#### View specific ITEM_FAMILY
+GET /store/1001
+ 
+#### View specific ITEM_VARIANT
+GET /store/1001/1
+ 
+
  
 #### Add a quantity of item_id 1001 to the shopping cart
 POST /cart

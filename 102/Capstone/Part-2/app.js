@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express=require('express'),
       itemRouter=require('./routes/store'),
       cartRouter=require('./routes/cart'),
@@ -15,6 +16,7 @@ app.get('/',(req,res)=>{
   res.redirect('/store')
 })
 
+
 // use routers to serve related endpoints
 app.use('/store', itemRouter)
 app.use('/cart', cartRouter)
@@ -24,4 +26,5 @@ app.use('/process', procRouter)
 // run app
 app.listen(port)
 
-//add a comment
+console.log(`http://localhost:${port}`)
+

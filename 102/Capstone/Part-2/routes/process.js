@@ -1,4 +1,6 @@
 const express=require('express'),
+      {neon}=require("@neondatabase/serverless"),
+      sql=neon(process.env.DATABASE_URL),
       router=express.Router()
 
 router.post('/',(req,res)=>{

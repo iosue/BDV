@@ -1,16 +1,16 @@
 #### List available products in the store
-GET /store
+GET http://localhost:3000/store
  
 #### View specific ITEM_FAMILY
-GET /store/1001
+GET http://localhost:3000/store/1001
  
 #### View specific ITEM_VARIANT
-GET /store/1001/1
+GET http://localhost:3000/store/1001/1
  
 
  
 #### Add a quantity of item_id 1001 to the shopping cart
-POST /cart
+POST http://localhost:3000/cart
 Content-Type: application/json
  
 {
@@ -19,10 +19,13 @@ Content-Type: application/json
 }
 
 #### List current contents of cart
-GET /cart
+GET http://localhost:3000/cart
+ 
+#### iew item on line 1 of cart
+GET http://localhost:3000/cart/1
  
 #### Edit quantity of item_id 1001 in the shopping cart
-PUT /cart/1001
+PUT http://localhost:3000/cart/1001
 Content-Type: application/json
  
 {
@@ -30,19 +33,17 @@ Content-Type: application/json
 } 
 
 #### Remove all quantity (entire line item) of item_id 1001 from the shopping cart
-DELETE /cart/1001
+DELETE http://localhost:3000/cart/1001
 
 
 #### Process Order
 #### Push content of shopping cart to the Payment Processing API
-POST /process
+POST http://localhost:3000/orders
 Content-Type: application/json
  
 {
   "user_id": 101,
-  "status": 1, // ["Processing", "Paid", "Shipped", "Partial", "Complete"]
   "payer_id": 1001,
-  "order_date": "2025-11-24T23:59:00-05:00",
   "shipping_address": 1001,
   "line_items": [
     {
@@ -62,34 +63,21 @@ Content-Type: application/json
   ]
 } 
 
-
-
-#### Finalize Order AFTER PAYMENT CONFIRMED
-#### Add order details to the Order list
-POST /orders
+#### Update the status of an existing order by id
+PUT http://localhost:3000/orders/0
 Content-Type: application/json
  
 {
-  "user_id": 101,
-  "status": 1,
-  "payer_id": 1001,
-  "order_date": "2025-11-24T23:59:00-05:00",
-  "shipping_address": 1001,
-  "line_items": [
-    {
-      "item_id": 1001,
-      "qty": 2,
-      "price": 100.00,
-      "discount_type": "percent",
-      "discount_amount": 5
-    },
-    {
-      "item_id": 1002,
-      "qty": 1,
-      "price": 100.00,
-      "discount_type": "flat",
-      "discount_amount": 15.00
-    }
-  ]
+  "status": 1
 } 
 
+
+#### List previous orders
+GET http://localhost:3000/orders
+ 
+#### View specific past order by id
+GET http://localhost:3000/orders/0
+ 
+#### View line item in specific past order
+GET http://localhost:3000/orders/0/1
+ 

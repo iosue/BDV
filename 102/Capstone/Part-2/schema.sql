@@ -100,7 +100,7 @@ CREATE TABLE "Order_Status" (
 );
 
 CREATE TABLE "Order" (
-  "order_id" int,
+  "order_id" serial,
   "user_id" int,
   "pay_id" int,
   "order_date" date,
@@ -123,17 +123,22 @@ CREATE TABLE "Order" (
 );
 
 CREATE TABLE "Order_Line" (
-  "line_id" int,
+  "line_id" serial,
   "order_id" int,
   "SKU" int,
   "quantity" int,
   "price" decimal(8,2),
+  "discount_type" int,
+  "discount_amount" decimal(8,2),
   PRIMARY KEY ("line_id"),
   CONSTRAINT "FK_Order_Line_SKU"
     FOREIGN KEY ("SKU")
       REFERENCES "Item_Variant"("SKU"),
   CONSTRAINT "FK_Order_Line_order_id"
     FOREIGN KEY ("order_id")
-      REFERENCES "Order"("order_id")
+      REFERENCES "Order"("order_id"),
+  CONSTRAINT "FK_Order_Line_discount_type"
+    FOREIGN KEY ("discount_type")
+      REFERENCES "Discount"("discount_id")
 );
 

@@ -14,7 +14,7 @@ CREATE TABLE "Item_Family" (
 CREATE TABLE "Item_Variant" (
   "SKU" int,
   "item_id" int,
-  "description" text,
+  "details" text,
   "size" varchar(3),
   "color" varchar(5),
   "price" decimal(8,2),

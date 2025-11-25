@@ -13,47 +13,36 @@ Orders.get('/',async(req,res)=>{
   }
 })
 
-Orders.get('/:item_id',async(req,res)=>{
-  const {item_id}=req.params
+Orders.get('/:order_id',async(req,res)=>{
+  const {order_id}=req.params
   try {
-    const items = await sql`SELECT * FROM "Item_Family" WHERE item_id=${item_id}`
-    res.json(items[0])
+    const orders=await sql`SELECT * FROM "Order" WHERE order_id=${order_id}`,
+          order_details=orders[0]
+    order_details.line_items=await sql`
+      SELECT * 
+      FROM "Order_Line" AS "ol" 
+      JOIN "Item_Variant" AS "iv" 
+      ON "ol"."SKU"="iv"."SKU"
+      JOIN "Item_Family" AS "if" 
+      ON "if"."item_id"="iv"."item_id"
+      WHERE order_id=${order_id}`
+    res.json(order_details)
   } catch (error) {
     console.error('Query failed:', error)
     res.status(500).send('Database query error')
   }
 })
 
-Orders.get('/:item/:variant',async(req,res)=>{
-  const {item,variant}=req.params
+Orders.get('/:order/:line',async(req,res)=>{
+  const {order,line}=req.params
   try {
-    const items = await sql`SELECT * FROM "Item_Family" AS f JOIN "Item_Variant" AS v ON f.item_id=v.item_id WHERE f.item_id=${item} AND "SKU"=${variant}`
-    res.json(items[0])
+    const lines=await sql`SELECT * FROM "Order_Line" WHERE order_id=${order} AND line_id=${line}`
+    res.json(lines[0])
   } catch (error) {
     console.error('Query failed:', error)
     res.status(500).send('Database query error')
   }
 })
+
 
 module.exports=Orders
-
-
-
-// const express=require('express'),
-//       {neon}=require("@neondatabase/serverless"),
-//       sql=neon(process.env.DATABASE_URL),
-//       router=express.Router()
-
-// router.get('/',(req,res)=>{
-//   res.send(`view order list`)
-// })
-// router.get('/:order',(req,res)=>{
-//   const {order}=req.params
-//   res.send(`view order ${order}`)
-// })
-// router.get('/:order/:item',(req,res)=>{
-//   const {order,item}=req.params
-//   res.send(`view item ${item} from ${order}`)
-// })
-
-// module.exports=router
